@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Url Loader</title>
+    <link rel='icon' href='https://i.matdoes.dev/0M12V' type='image/x-icon'/ >
+  </head>
+  <body>
+    <form id="url" autocomplete="off">
+      <label for="url">Put URL here:</label>
+      <input type="text" id="urlinput" name="url">
+      <button type="button" name="button" value="load" onclick="loadurl()">Load</button>
+    </form>
+    <iframe width="100%" height="100%" id="loader" src="http://jerryguo.epizy.com/urlloaderpages.html"></iframe>
+  </body>
+  <script>
+  var h = window.innerHeight + "px";
+  document.getElementById("loader").style.height = h;
+    function refine(url) {
+      url = url.trim();
+      urllist = url.split("");
+      https = urllist[0]+urllist[1]+urllist[2]+urllist[3]+urllist[4]+urllist[5]+urllist[6]+urllist[7]
+      if (https=="https://") {
+        return(url);
+      }
+      else {
+        return("https://" + url);
+      }
+    }
+    function loadurl(){
+      var x = document.getElementById("urlinput").value;
+      x = refine(x);
+      h = window.innerHeight + "px";
+      document.getElementById("loader").src = x;
+    }
+  </script>
+</html>
