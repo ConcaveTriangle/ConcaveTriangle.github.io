@@ -1,36 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
-  <title>Mainpage</title>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="font_awesome.css">
-  <link rel="stylesheet" href="w3.css">
-  <link rel="stylesheet" href="index.css">
-  <link rel='icon' href='http://jerryguo.epizy.com/Jerry_profile 6.jpg' type='image/x-icon'/ >
-  <link rel="stylesheet" href="webfontkit-20200516-221649/stylesheet.css" type="text/css" charset="utf-8" />
-  <body>
-    <div class="top">
-      <div class="bar blue card left-align large">
-        <a class="bar-item button hide-medium hide-large right padding-large hover-white large blue" href="javascript:void(0);" onclick="menu()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
-        <a href="http://jerryguo.epizy.com/" class="bar-item button padding-large white">Home</a>
-        <a href="pages1.html" class="bar-item button hide-small padding-large hover-white">Pages 1</a>
-        <a href="pages2.html" class="bar-item button hide-small padding-large hover-white">Pages Beta</a>
-        <a href="pages3.html" class="bar-item button hide-small padding-large hover-white">Pages 3</a>
-        <a href="pages4.html" class="bar-item button hide-small padding-large hover-white">Pages 4</a>
-        <a href="urlloader.html" class="bar-item button hide-small padding-large hover-white">URL Loader</a>
-        <a href="timer.html" class="bar-item button hide-small padding-large hover-white">Hypixel Skyblock Time</a>
-      </div>
 
-      <div id="navDemo" class="bar-block white hide hide-large hide-medium large">
-        <a href="pages1.html" class="bar-item button padding-large">Pages 1</a>
-        <a href="pages2.html" class="bar-item button padding-large">Pages Beta</a>
-        <a href="pages3.html" class="bar-item button padding-large">Pages 3</a>
-        <a href="pages4.html" class="bar-item button padding-large">Pages 4</a>
-        <a href="urlloader.html" class="bar-item button padding-large">URL Loader</a>
-        <a href="timer.html" class="bar-item button padding-large">Hypixel Skyblock Time</a>
-      </div>
-    </div>
-    <script src="menu.js" charset="utf-8"></script>
-    <h1>Jerry. X. Guo's Home Page</h1>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jerry Guo</title>
+    <link rel="icon" href="./assets/icon.png" type="image/png">
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="kanit.css">
+    <link rel="stylesheet" href="./assets/FontAwesome/css/brands.css">
+    <link rel="stylesheet" href="./assets/FontAwesome/css/solid.css">
+    <link rel="stylesheet" href="./assets/FontAwesome/css/fontawesome.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">Jerry Guo</div>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#experience">Experience</a>
+            <a href="#papers">Papers</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="top">
+        <!-- Profile Image -->
+        <div>
+            <img src="profile.jpeg" alt="Profile Picture">
+        </div>
+        
+        <!-- About Text -->
+        <div>
+            <h1>About Me</h2>
+            <p>
+                Hi! I'm Jerry Guo, a student at Gunn High School. I love creating, and I specialize in mathematics and computer science.  
+            </p>
+            <a href="https://www.linkedin.com/in/jerry-guo-66a211229/"><i class="fa-brands fa-linkedin contact"></i></a>
+            <a href="https://github.com/ConcaveTriangle/"><i class="fa-brands fa-github contact"></i></a>
+            <a href="mailto:jerryxguo2006@gmail.com"><i class="fa-solid fa-envelope contact"></i></a>
+            
+        </div>
+    </section>
+
+    <!-- About Me -->
+    <section id="about" class="container">
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="container project">
+        <h2 class="section-title">My Projects</h2>
+        <div class="project-item">
+            <h3>NAS Management Interface</h3>
+            <p>A streamlined tool for managing network storage, accessible at <a href="https://drive.concavetriangle.com">drive.concavetriangle.com</a>.</p>
+        </div>
+        <div class="project-item">
+            <h3>AI Frontend</h3>
+            <p>An advanced interface to interact with Eliza, accessible at <a href="https://ai.concavetriangle.com">ai.concavetriangle.com</a>.</p>
+        </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience" class="container experience">
+        <h2 class="section-title">Experience</h2>
+        <div class="experience-item">
+            <h3>Foothill College</h3>
+            <p>Attended courses Math 1A-1D and CS 2A.</p>
+        </div>
+        <div class="experience-item">
+            <h3>Competition Math</h3>
+            <p>Competed on various college math competitions.</p>
+        </div>
+    </section>
+
+    <!-- Papers -->
+    <section id="papers" class="container papers">
+        <h2 class="section-title">Publications & Research</h2>
+        <div class="paper-item">
+            <h3>AI-assisted Legal Education for Student Grouping Using Large Language Models</h3>
+            <p>Large language models (LLMs) have demonstrated transformative potential in fields like education and law. This paper examines their role as assistive tools for legal education through a system called LawEducator, an AI assistant designed for legal learning. Built on a pre-trained LLM with domain-specific fine-tuning and instructional alignment, LawEducator answers legal queries and integrates a retriever to source knowledge from legal texts. The paper also explores its application in educational practices like student grouping and analyzes the benefits and limitations of LLMs in legal education. <a href="#">Read more</a></p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>©2024 Jerry Guo. All rights reserved.</p>
+        <p><a href="#top">Back to Top</a></p>
+    </footer>
+
+</body>
+
 </html>

@@ -1,1 +1,0 @@
-# ConcaveTriangle.github.io

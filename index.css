@@ -1,4 +1,117 @@
-h1 {
-    font-family: 'jerrys_handwriting_05162020Rg';
+/* Color scheme: Hue=207     */
+
+body {
+    font-family: 'Kanit', sans-serif;
+    margin: 0;
+    padding: 0;
+    padding-top: 60;
 }
 
+header {
+    background-color: #4F5C66;
+    color: #fff;
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    font-size: 1.3em;
+}
+
+header a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+header nav {
+    display: flex;
+}
+
+
+.hero {
+    background: linear-gradient(to bottom, #155E99, #2196F5);
+    color: white;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    padding: 0px 80px;
+    gap: 20px;
+    margin-top: calc(35px + 1.3em);
+}
+
+.hero img {
+    width: 200px;
+    height: 300px;
+    border-radius: 50%;
+}
+
+.hero div {
+    margin: 80px;
+}
+
+.hero h1 {
+    font-size: 3em;
+    margin: 0;
+}
+
+.hero p {
+    font-size: 1.2em;
+}
+
+.hero i {
+    font-size: 3em;
+    padding: 10px;
+}
+
+.hero a:link {
+    color: white;
+}
+
+.hero a:visited {
+    color: white;
+}
+
+.hero a:hover {
+    color: lightgray;
+}
+
+.hero a:active {
+    color: #73B2E6;
+}
+
+.container {
+    padding: 20px;
+}
+
+.section-title {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #004D8C;
+}
+
+.about, .project, .experience, .papers {
+    margin-bottom: 40px;
+    font-weight: 300;
+}
+
+.project-item, .paper-item, .experience-item {
+    margin-bottom: 20px;
+}
+
+footer {
+    background-color: #4F5C66;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+}
+
+footer a {
+    color: #004D8C;
+    text-decoration: none;
+}
