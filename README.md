@@ -10,6 +10,7 @@ Requires Node.js 20 or later.
 ```sh
 npm run dev
 npm run check
+npm test
 npm run build
 ```
 
@@ -24,6 +25,17 @@ compatible with GitHub Pages; `CNAME` preserves the existing custom domain.
 - `research/laweducator.html`: publication overview and verified DOI.
 - `index.css`: shared appearance and responsive layouts.
 - `site.js`: navigation and footer year.
+- `studios/halvorsen/`: self-contained Halvorsen attractor studio, adapted from
+  the local Halvorsen Trajectory Studio. Includes camera and color controls,
+  trace replay, and full-resolution PNG/SVG exports. No server or external
+  runtime dependencies are needed.
+- `tests/`: numerical and integration regression checks for the studio.
+
+The studio lives at `/studios/halvorsen/index.html` and is linked from Projects.
+All calculations and downloads happen in the browser. High-density/8K exports
+can use significant memory; smaller exports are recommended on mobile devices.
+Only the four explicitly allowlisted studio assets enter the public build;
+tests, private references, and files in the original studio project are excluded.
 
 Eliza v2 and SelfPortrait v2 link explicitly to their earlier public versions.
 The original NAS project, generated notes, and geometry experiment have been
