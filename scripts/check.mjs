@@ -4,8 +4,8 @@ import { fileURLToPath } from 'node:url';
 export const projectRoot=fileURLToPath(new URL('../',import.meta.url));
 export async function publicFiles(root=projectRoot){
   const files=['index.html','index.css','site.js','profile.jpeg','assets/favicon.svg','CNAME','.nojekyll',
-    'studios/halvorsen/index.html','studios/halvorsen/styles.css',
-    'studios/halvorsen/js/halvorsen.js','studios/halvorsen/js/app.js'];
+    'studios/halvorsen/index.html','studios/attractors/index.html',
+    'studios/attractors/styles.css','studios/attractors/js/attractors.js','studios/attractors/js/app.js'];
   for(const dir of ['projects','research'])for(const entry of await readdir(resolve(root,dir)))if(entry.endsWith('.html'))files.push(`${dir}/${entry}`);
   return files;
 }

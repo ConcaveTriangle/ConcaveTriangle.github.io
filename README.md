@@ -25,16 +25,24 @@ compatible with GitHub Pages; `CNAME` preserves the existing custom domain.
 - `research/laweducator.html`: publication overview and verified DOI.
 - `index.css`: shared appearance and responsive layouts.
 - `site.js`: navigation and footer year.
-- `studios/halvorsen/`: self-contained Halvorsen attractor studio, adapted from
+- `studios/attractors/`: self-contained attractor studio, generalized from
   the local Halvorsen Trajectory Studio. Includes camera and color controls,
   trace replay, and full-resolution PNG/SVG exports. No server or external
   runtime dependencies are needed.
 - `tests/`: numerical and integration regression checks for the studio.
 
-The studio lives at `/studios/halvorsen/index.html` and is linked from Projects.
+The studio lives at `/studios/attractors/index.html` and is linked from Projects.
+The original `/studios/halvorsen/index.html` redirects to it.
+Halvorsen, Lorenz, Rössler, Thomas, and Langford (often called Aizawa online)
+share one RK4 integration and rendering pipeline. Model definitions in
+`studios/attractors/js/attractors.js` specify equations, parameters, numerical
+presets, camera, descriptions, and sources. A new registry entry automatically
+gets parameter controls and equations; the HTML options provide a fallback.
+Presets are numerical visualization choices, not guarantees that all parameter
+combinations are chaotic. SVG metadata records the actual system and settings.
 All calculations and downloads happen in the browser. High-density/8K exports
 can use significant memory; smaller exports are recommended on mobile devices.
-Only the four explicitly allowlisted studio assets enter the public build;
+Only the four explicitly allowlisted studio assets and legacy redirect enter the public build;
 tests, private references, and files in the original studio project are excluded.
 
 Eliza v2 and SelfPortrait v2 link explicitly to their earlier public versions.

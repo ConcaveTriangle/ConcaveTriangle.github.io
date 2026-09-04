@@ -734,5 +734,8 @@ h1 { line-height: 1.15; font-weight: 600; letter-spacing: -0.035em; }
 .app-footer { text-transform: none; letter-spacing: 0; flex-wrap: wrap; }
 #statusMessage[data-error="true"] { color: #a32626; }
 .notice { padding: 16px; background: var(--panel); border: 1px solid var(--line); }
+.system-description { margin: 12px 0 20px; color: var(--muted); font-size: 1rem; }
+#parameterControls .range-field + .range-field { margin-top: 16px; }
+.equations p { overflow-wrap: anywhere; }
 @media (min-width: 861px) { .stage-column { position: sticky; top: 24px; } }
 @media (max-width: 620px) { .app-header { align-items: stretch; } .app-footer { align-items: flex-start; flex-direction: column; } }

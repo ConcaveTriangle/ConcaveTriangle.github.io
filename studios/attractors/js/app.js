@@ -1,8 +1,8 @@
-(function runHalvorsenStudio() {
+(function runAttractorStudio() {
   "use strict";
 
-  if (!window.Halvorsen) {
-    throw new Error("The Halvorsen model failed to load.");
+  if (!window.Attractors) {
+    throw new Error("The attractor models failed to load.");
   }
 
   const $ = (selector) => document.querySelector(selector);
@@ -11,6 +11,7 @@
   const TAU = Math.PI * 2;
   const PREVIEW_SAMPLE_LIMIT = 96000;
   const INTERACTIVE_SAMPLE_LIMIT = 32000;
+  const Attractors = window.Attractors;
 
   const palettes = Object.freeze({
     aurora: Object.freeze({
@@ -80,8 +81,12 @@
   });
 
   const elements = {
-    alphaInput: $("#alphaInput"),
-    alphaOutput: $("#alphaOutput"),
+    systemInput: $("#systemInput"),
+    systemDescription: $("#systemDescription"),
+    systemEquations: $("#systemEquations"),
+    systemSource: $("#systemSource"),
+    parameterControls: $("#parameterControls"),
+    parameterInputs: new Map(),
     backgroundInput: $("#backgroundInput"),
     burnInInput: $("#burnInInput"),
     canvas: $("#trajectoryCanvas"),
@@ -121,13 +126,8 @@
   const state = {
     aspect: "16:9",
     camera: { ...cameraPresets.hero, perspective: 0.18 },
-    model: {
-      a: 1.3,
-      burnIn: 20000,
-      dt: 0.0025,
-      initial: [-6.4, 0, 0],
-      steps: 128000,
-    },
+    selectedSystem: 'halvorsen',
+    model: Attractors.defaults(),
     style: {
       background: "matched",
       glow: 0.42,
@@ -300,7 +300,7 @@
     if (initial.some((value) => !Number.isFinite(value))) {
       throw new TypeError("Initial x, y, and z must all be finite numbers.");
     }
-    if (Math.max(...initial) - Math.min(...initial) < 1e-10) {
+    if (['halvorsen', 'thomas'].includes(state.selectedSystem) && Math.max(...initial) - Math.min(...initial) < 1e-10) {
       throw new RangeError("Choose an asymmetric initial state so the orbit can enter the attractor.");
     }
 
@@ -308,7 +308,8 @@
     const burnTime = Number(elements.burnInInput.value);
 
     return {
-      a: Number(elements.alphaInput.value),
+      system: state.selectedSystem,
+      parameters: Object.fromEntries([...elements.parameterInputs].map(([key, control]) => [key, Number(control.input.value)])),
       burnIn: Math.ceil(burnTime / dt),
       dt,
       initial,
@@ -318,8 +319,10 @@
 
   function updateLabels() {
     const dimensions = getOutputDimensions();
-    elements.alphaOutput.value = `a = ${Number(elements.alphaInput.value).toFixed(2)}`;
-    elements.alphaOutput.textContent = elements.alphaOutput.value;
+    for (const { input, output } of elements.parameterInputs.values()) {
+      output.value = Number(input.value).toLocaleString('en-US', { maximumFractionDigits: 6 });
+      output.textContent = output.value;
+    }
     elements.strokeOutput.value = `${state.style.stroke.toFixed(2)} px`;
     elements.strokeOutput.textContent = elements.strokeOutput.value;
     elements.glowOutput.value = `${Math.round(state.style.glow * 100)}%`;
@@ -332,12 +335,64 @@
     elements.perspectiveOutput.textContent = elements.perspectiveOutput.value;
     elements.dimensionOutput.value = `${dimensions.width} × ${dimensions.height}`;
     elements.dimensionOutput.textContent = elements.dimensionOutput.value;
-    elements.stageMark.textContent = `H / ${state.model.a.toFixed(2)}`;
+    const displayedSystem = Attractors.getSystem(state.model.system);
+    elements.stageMark.textContent = displayedSystem.name;
     elements.footerState.textContent = `x₀ ${state.model.initial[0].toFixed(2)} · y₀ ${state.model.initial[1].toFixed(2)} · z₀ ${state.model.initial[2].toFixed(2)}`;
     elements.canvas.setAttribute(
       "aria-label",
-      `Three-dimensional Halvorsen attractor trajectory at a equals ${state.model.a.toFixed(2)}, rendered from ${formatCount(state.model.steps)} samples. Drag to orbit the camera.`,
+      `Three-dimensional ${displayedSystem.name} trajectory, rendered from ${formatCount(state.model.steps)} samples. Drag to orbit the camera.`,
     );
+  }
+
+  function configureSystem(id) {
+    const system = Attractors.getSystem(id);
+    state.selectedSystem = id;
+    elements.systemInput.value = id;
+    elements.parameterControls.replaceChildren();
+    elements.parameterInputs.clear();
+    for (const spec of system.parameters) {
+      const label = document.createElement('label');
+      label.className = 'range-field';
+      const caption = document.createElement('span');
+      const name = document.createElement('span');
+      name.textContent = spec.label;
+      const output = document.createElement('output');
+      const input = document.createElement('input');
+      input.type = 'range';
+      input.id = `parameter-${spec.key}`;
+      input.min = String(spec.min);
+      input.max = String(spec.max);
+      // Preserve exact preset values such as beta = 8/3; a coarse step would
+      // cause the browser to round them before the first integration.
+      input.step = 'any';
+      input.value = String(spec.value);
+      label.htmlFor = input.id;
+      output.setAttribute('for', input.id);
+      caption.append(name, output);
+      label.append(caption, input);
+      elements.parameterControls.append(label);
+      elements.parameterInputs.set(spec.key, { input, output });
+      input.addEventListener('input', () => { updateLabels(); scheduleReintegration(); });
+    }
+    elements.stepInput.replaceChildren(...system.timeSteps.map(value => {
+      const option = document.createElement('option');
+      option.value = String(value); option.textContent = String(value); return option;
+    }));
+    elements.stepInput.value = String(system.dt);
+    elements.burnInInput.value = String(system.burnTime);
+    elements.detailInput.value = '128000';
+    elements.initialInputs.forEach((input, index) => { input.value = String(system.initial[index]); });
+    elements.systemDescription.textContent = system.description;
+    elements.systemEquations.replaceChildren(...system.equations.map(equation => {
+      const line = document.createElement('p'); line.textContent = equation; return line;
+    }));
+    elements.systemSource.href = system.source;
+    elements.systemSource.textContent = system.sourceLabel;
+    Object.assign(state.camera, system.camera, { perspective: 0.18 });
+    elements.zoomInput.value = String(state.camera.zoom);
+    elements.perspectiveInput.value = String(state.camera.perspective);
+    markCameraPreset('hero');
+    updateLabels();
   }
 
   function projectTrajectory(trajectory, width, height, count, options = {}) {
@@ -620,7 +675,7 @@
 
     try {
       const model = readModelControls();
-      const trajectory = window.Halvorsen.integrate(model);
+      const trajectory = Attractors.integrate(model);
       if (generation !== state.generation) return;
       state.model = model;
       state.trajectory = trajectory;
@@ -631,7 +686,7 @@
       scheduleDraw();
     } catch (error) {
       if (generation === state.generation) {
-        const retained = state.trajectory ? ` Showing the last valid trajectory (a = ${state.model.a.toFixed(2)}). Change the settings or reset the system to export.` : ' Change the settings or reset the system to try again.';
+        const retained = state.trajectory ? ` Showing the last valid ${Attractors.getSystem(state.model.system).name} trajectory. Change the settings or reset the system to export.` : ' Change the settings or reset the system to try again.';
         setStatus((error.message || "The trajectory could not be integrated.") + retained, true);
       }
     } finally {
@@ -655,7 +710,7 @@
 
   function applyCameraPreset(name) {
     if (state.exporting) return;
-    const preset = cameraPresets[name];
+    const preset = name === 'hero' ? Attractors.getSystem(state.selectedSystem).camera : cameraPresets[name];
     if (!preset) return;
     Object.assign(state.camera, preset);
     elements.zoomInput.value = String(state.camera.zoom);
@@ -715,9 +770,9 @@
   }
 
   function exportFilename(extension, dimensions) {
-    const parameter = state.model.a.toFixed(2).replace(".", "-");
+    const parameters = Object.entries(state.model.parameters).map(([key, value]) => `${key}${Number(value.toFixed(6))}`.replaceAll('.', '-')).join('-');
     const ratio = state.aspect.replace(":", "x");
-    return `halvorsen-a${parameter}-${ratio}-${dimensions.width}x${dimensions.height}.${extension}`;
+    return `${state.model.system}-${parameters}-${ratio}-${dimensions.width}x${dimensions.height}.${extension}`;
   }
 
   async function exportPng() {
@@ -810,8 +865,8 @@
     const baseWidth = state.style.stroke * (dimensions.height / 1080);
     const metadata = escapeXml(
       JSON.stringify({
-        system: "Halvorsen attractor",
-        equations: ["-a*x-4*y-4*z-y^2", "-a*y-4*z-4*x-z^2", "-a*z-4*x-4*y-x^2"],
+        system: Attractors.getSystem(trajectory.config.system).name,
+        equations: Attractors.getSystem(trajectory.config.system).equations,
         model: trajectory.config,
         camera: state.camera,
         style: state.style,
@@ -848,8 +903,8 @@
     return [
       `<?xml version="1.0" encoding="UTF-8"?>`,
       `<svg xmlns="http://www.w3.org/2000/svg" width="${dimensions.width}" height="${dimensions.height}" viewBox="0 0 ${dimensions.width} ${dimensions.height}" role="img" aria-labelledby="title desc">`,
-      `<title id="title">Halvorsen attractor trajectory</title>`,
-      `<desc id="desc">Cyclically symmetric chaotic trajectory rendered at a equals ${trajectory.config.a.toFixed(2)}.</desc>`,
+      `<title id="title">${escapeXml(Attractors.getSystem(trajectory.config.system).name)} trajectory</title>`,
+      `<desc id="desc">Numerically integrated trajectory. System, parameters, initial state, camera and styling are recorded in the metadata.</desc>`,
       `<metadata>${metadata}</metadata>`,
       `<defs>${svgBackground.definition}<clipPath id="artboard"><rect width="${dimensions.width}" height="${dimensions.height}"/></clipPath>${definitions}</defs>`,
       `<rect width="${dimensions.width}" height="${dimensions.height}" fill="${svgBackground.fill}"/>`,
@@ -880,18 +935,13 @@
   }
 
   function bindControls() {
-    elements.alphaInput.addEventListener("input", () => {
-      updateLabels();
-      scheduleReintegration();
+    elements.systemInput.addEventListener('change', () => {
+      configureSystem(elements.systemInput.value);
+      scheduleReintegration(0);
     });
 
     $("#resetSystemButton").addEventListener("click", () => {
-      elements.alphaInput.value = "1.3";
-      elements.detailInput.value = "128000";
-      elements.stepInput.value = "0.0025";
-      elements.burnInInput.value = "50";
-      elements.initialInputs.forEach((input, index) => { input.value = String(window.Halvorsen.DEFAULTS.initial[index]); });
-      updateLabels();
+      configureSystem(state.selectedSystem);
       scheduleReintegration(0);
     });
 
@@ -968,7 +1018,7 @@
 
     elements.newOrbitButton.addEventListener("click", () => {
       state.seed += 1;
-      const initial = window.Halvorsen.seededInitial(state.seed);
+      const initial = Attractors.seededInitial(state.seed, state.selectedSystem);
       elements.initialInputs.forEach((input, index) => {
         input.value = String(initial[index]);
       });
@@ -1090,6 +1140,10 @@
   }
 
   function initialise() {
+    elements.systemInput.replaceChildren(...Object.values(Attractors.systems).map(system => {
+      const option = document.createElement('option'); option.value = system.id; option.textContent = system.name; return option;
+    }));
+    configureSystem('halvorsen');
     bindControls();
     bindCamera();
     elements.canvasFrame.dataset.aspect = state.aspect;
