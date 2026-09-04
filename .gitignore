@@ -1,0 +1,7 @@
+dist/
+.preview/
+input/
+inputs/
+node_modules/
+*.tgz
+*.tar.gz
