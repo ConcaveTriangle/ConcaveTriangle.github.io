@@ -1,0 +1,41 @@
+# China
+
+List of observations, big and small, while on my 2-month China trip in July 2025. I had emigrated at 8 to California in 2015, and this trip was my first time back in 10 years. 
+
+-  Things are much cheaper here - both wages and prices of commodities. Non-high end electronics are usually 2-3 times cheaper.
+-  Large population causes popular tourism sites to be much more crowded, and attractions - even historical sites, are often heavily converted to be more convenient towards tourists. 
+-  Same vein - taxis / equivalent to ubers are popular here, but most roads are very congested. Better to take public transport such as the subway. 
+-  Cash is virtually nonexistent here. As is Apple Pay. Most transactions are done with mini-programs in WeChat or Alipay. 
+-  Many things in China feel more negotiable - whether that’s the stereotypical haggling for a deal in a market or convincing a worker to let you in while late. 
+-  Things could also feel more impromptu - train tickets are the same price whether they’re in 20 mins or 2 weeks. Same with hotels - lot less focused on early reservations. 
+-  Money talks here in a much more direct way. You can skip lines, get better service, get a boat ride past closing time, buy something “not for sale”, or even get some harmless things that are technically not allowed past security, like a small screwdriver or a snack.
+-  China’s high speed rail is amazing, but lots of things you can’t bring, such as closed bottles of liquid or large battery banks. Think of it as half of TSA. Subways have inspections that are much more lax. 
+-  Widespread public battery banks (~5000mah) - scan them to retrieve, go somewhere and use it up, and deposit them back. Very convenient. 
+-  Restaurants: No tipping, but a good review goes a long way for the waiters’ attitudes. 
+-  Mosquitos are commonplace here, prevention includes 花露水 or 虎膏. 
+-  Slight disregard for safety items in favor of convenience, like helmets and seatbelts. 
+-  Police state - lots of things here are under surveillance. As a result, crime rates are low, but scams/ripoffs are still rampant.
+-  Food delivery / take out is very popular here, and much more convenient. 
+-  Healthcare - such as hospitals and pharmacies, is abundant, and could be government ran or private. 
+-  Imitation brands such as clothes have the capacity to be almost indistinguishable from the original. 
+-  Milk tea is a lot less sweet here.
+-  Electric bikes are ostensibly speed limited to 25kmph, but one can get the speed limiter removed (wink, wink, 70kmph, or so I've heard) to make them effectively light motorcycles. 
+-  Political/patriotic slogans are common as everyday posters. 
+-  Cultural things: 
+    -  Dinners between family and friends are expected to start 30-60 minutes late. 
+    -  Expected to not finish every food as a sign of wealth. 
+    -  People don’t really apologize after bumping into someone.
+    -  Smoking in public is also acceptable.
+    -  Domestic violence is tolerated here - not between couples, but more corporal punishment for children. 
+    -  Academics for children are prioritized above all, with “one-chance” examinations to get into high school and college.
+    -  Underage drinking is more socially acceptable and even expected. 
+    -  Parents are often a lot more clingy and micromanagement is common. 
+-  Food:
+    -  杨梅
+    -  莲子
+    -  旺旺小馒头
+    -  鸭舌
+    -  烤肠
+    -  鲜榨橙汁
+    -  西瓜汁
+    -  美汁源橙汁
