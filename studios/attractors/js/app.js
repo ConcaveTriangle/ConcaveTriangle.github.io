@@ -20,19 +20,7 @@
       stops: Object.freeze(["#4357ff", "#00d8c0", "#f4e58b", "#ff6d55"]),
       blend: "screen",
     }),
-    "aurora-quiet": Object.freeze({
-      background: "#090c13",
-      background2: "#18212b",
-      stops: Object.freeze(["#64718f", "#60938e", "#b8b18b", "#be8276"]),
-      blend: "screen",
-    }),
-    "aurora-mist": Object.freeze({
-      background: "#0d1117",
-      background2: "#202a31",
-      stops: Object.freeze(["#748099", "#78a29e", "#bac5af", "#c6a39b"]),
-      blend: "screen",
-    }),
-    "aurora-dusk": Object.freeze({
+    dusk: Object.freeze({
       background: "#0d0b12",
       background2: "#241d29",
       stops: Object.freeze(["#656485", "#807b94", "#aaa0a4", "#bd8d83"]),
@@ -133,7 +121,7 @@
       glow: 0.42,
       gradient: "halo",
       gradientStrength: 0.78,
-      palette: "aurora-quiet",
+      palette: "aurora",
       stroke: 0.95,
     },
     trajectory: null,
@@ -286,7 +274,7 @@
     elements.traceButton.disabled = unavailable;
   }
 
-  function setExportBusy(busy, label = "Rendering poster…") {
+  function setExportBusy(busy, label = "Rendering PNG…") {
     state.exporting = busy;
     updateControlAvailability();
     elements.exportPngButton.textContent = busy ? label : "Export PNG";
@@ -340,7 +328,7 @@
     elements.footerState.textContent = `x₀ ${state.model.initial[0].toFixed(2)} · y₀ ${state.model.initial[1].toFixed(2)} · z₀ ${state.model.initial[2].toFixed(2)}`;
     elements.canvas.setAttribute(
       "aria-label",
-      `Three-dimensional ${displayedSystem.name} trajectory, rendered from ${formatCount(state.model.steps)} samples. Drag to orbit the camera.`,
+      `Three-dimensional ${displayedSystem.name} trajectory, rendered from ${formatCount(state.model.steps)} samples. Drag to rotate the view.`,
     );
   }
 
@@ -919,7 +907,7 @@
     const filename = exportFilename("svg", dimensions);
     stopTrace();
     setExportBusy(true, "Rendering…");
-    setStatus(`Building ${dimensions.width} × ${dimensions.height} vector artwork…`);
+    setStatus(`Rendering ${dimensions.width} × ${dimensions.height} SVG…`);
     await new Promise((resolve) => window.setTimeout(resolve, 30));
 
     try {

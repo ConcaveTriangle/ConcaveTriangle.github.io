@@ -3,21 +3,20 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Explore Halvorsen, Lorenz, Rössler, Thomas, and Langford attractors. Adjust their parameters, rotate in 3D, and export PNG or SVG artwork.">
-    <meta name="theme-color" content="#f8faff">
-    <title>Attractor Studio — Jerry Guo</title>
-    <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+    <meta name="description" content="A 3D viewer for Halvorsen, Lorenz, Rössler, Thomas, and Langford attractors, with adjustable parameters and PNG or SVG export.">
+    <meta name="theme-color" content="#f0f9ff">
+    <title>Attractors — Jerry Guo</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <a class="skip-link" href="#main">Skip to studio</a>
+    <a class="skip-link" href="#main">Skip to Attractors</a>
     <div class="app-shell">
       <nav class="studio-nav" aria-label="Website navigation"><a href="../../index.html">← Jerry Guo</a><a href="../../index.html#projects">All projects</a></nav>
       <header class="app-header">
         <div>
-          <p class="eyebrow">Mathematics / Interactive studio</p>
-          <h1>Attractor <span>studio</span></h1>
-          <p class="studio-intro">Five systems, countless trajectories. Choose a flow, make it yours, and export a poster.</p>
+          <p class="eyebrow">Mathematics</p>
+          <h1>Attractors</h1>
+          <p class="studio-intro">A 3D viewer for five attractors. Adjust the parameters and colors, rotate the view, and save the result as a PNG or SVG.</p>
         </div>
         <div class="header-actions">
           <button class="button button-quiet" id="newOrbitButton" type="button">
@@ -29,14 +28,14 @@
         </div>
       </header>
 
-      <noscript><p class="notice">Enable JavaScript to calculate trajectories and use the studio. All calculations and exports run in your browser.</p></noscript>
+      <noscript><p class="notice">Enable JavaScript to calculate trajectories and use Attractors. All calculations and exports run in your browser.</p></noscript>
       <main class="workspace" id="main">
         <section class="stage-column" aria-labelledby="stageHeading">
           <h2 class="sr-only" id="stageHeading">Trajectory preview</h2>
 
           <div class="stage-toolbar">
-            <fieldset class="segmented-control" aria-label="Poster aspect ratio">
-              <legend class="sr-only">Poster aspect ratio</legend>
+            <fieldset class="segmented-control" aria-label="Image aspect ratio">
+              <legend class="sr-only">Image aspect ratio</legend>
               <label>
                 <input type="radio" name="aspect" value="16:9" checked />
                 <span>16:9</span>
@@ -56,7 +55,7 @@
               role="img"
               tabindex="0"
               aria-describedby="cameraHelp"
-              aria-label="Three-dimensional Halvorsen attractor trajectory at a equals 1.3. Drag to orbit the camera."
+              aria-label="Three-dimensional Halvorsen attractor trajectory at a equals 1.3. Drag to rotate the view."
             >
               Your browser does not support the canvas element.
             </canvas>
@@ -66,7 +65,7 @@
               <span>RK4</span>
             </div>
 
-            <p class="camera-hint" aria-hidden="true">Drag to orbit · Scroll to frame</p>
+            <p class="camera-hint" aria-hidden="true">Drag to rotate · Scroll to zoom</p>
 
             <button
               class="trace-button"
@@ -109,7 +108,7 @@
                 <option value="langford">Langford (Aizawa)</option>
               </select>
             </label>
-            <p class="system-description" id="systemDescription">Three interwoven lobes in a cyclically symmetric flow.</p>
+            <p class="system-description" id="systemDescription">A flow with three lobes and cyclic symmetry.</p>
             <div id="parameterControls" aria-label="System parameters"></div>
             <p class="export-note">Changing parameters can produce periodic or escaping trajectories. Reset restores the preset.</p>
 
@@ -117,10 +116,10 @@
               <label class="select-field" for="detailInput">
                 <span>Samples</span>
                 <select id="detailInput">
-                  <option value="64000">64k · standard</option>
-                  <option value="128000" selected>128k · fine</option>
-                  <option value="256000">256k · print</option>
-                  <option value="480000">480k · ultra</option>
+                  <option value="64000">64,000</option>
+                  <option value="128000" selected>128,000</option>
+                  <option value="256000">256,000</option>
+                  <option value="480000">480,000</option>
                 </select>
               </label>
 
@@ -157,17 +156,15 @@
             <div class="section-heading">
               <div>
                 <p class="section-index">02</p>
-                <h2>Surface</h2>
+                <h2>Appearance</h2>
               </div>
             </div>
 
             <label class="select-field full-width" for="paletteInput">
               <span>Palette</span>
               <select id="paletteInput">
-                <option value="aurora">Aurora / vivid</option>
-                <option value="aurora-quiet" selected>Aurora / quiet</option>
-                <option value="aurora-mist">Aurora / mist</option>
-                <option value="aurora-dusk">Aurora / dusk</option>
+                <option value="aurora" selected>Aurora</option>
+                <option value="dusk">Dusk</option>
                 <option value="ember">Ember / carbon</option>
                 <option value="ivory">Cobalt / ivory</option>
                 <option value="cyanotype">Cyanotype</option>
@@ -193,18 +190,18 @@
               <label class="select-field" for="gradientInput">
                 <span>Gradient</span>
                 <select id="gradientInput">
-                  <option value="halo" selected>Soft halo</option>
-                  <option value="corner">Corner bloom</option>
-                  <option value="diagonal">Diagonal wash</option>
-                  <option value="horizon">Horizon band</option>
-                  <option value="solid">Solid field</option>
+                  <option value="halo" selected>Radial</option>
+                  <option value="corner">Corner</option>
+                  <option value="diagonal">Diagonal</option>
+                  <option value="horizon">Horizontal</option>
+                  <option value="solid">None</option>
                 </select>
               </label>
             </div>
 
             <label class="range-field" for="gradientStrengthInput">
               <span>
-                <span>Gradient depth</span>
+                <span>Gradient strength</span>
                 <output id="gradientStrengthOutput" for="gradientStrengthInput">78%</output>
               </span>
               <input id="gradientStrengthInput" type="range" min="0" max="1" step="0.01" value="0.78" />
@@ -212,7 +209,7 @@
 
             <label class="range-field" for="strokeInput">
               <span>
-                <span>Stroke weight</span>
+                <span>Line width</span>
                 <output id="strokeOutput" for="strokeInput">0.95 px</output>
               </span>
               <input id="strokeInput" type="range" min="0.35" max="2.4" step="0.05" value="0.95" />
@@ -220,7 +217,7 @@
 
             <label class="range-field" for="glowInput">
               <span>
-                <span>Atmosphere</span>
+                <span>Glow</span>
                 <output id="glowOutput" for="glowInput">42%</output>
               </span>
               <input id="glowInput" type="range" min="0" max="1" step="0.01" value="0.42" />
@@ -244,7 +241,7 @@
 
             <label class="range-field" for="zoomInput">
               <span>
-                <span>Framing</span>
+                <span>Zoom</span>
                 <output id="zoomOutput" for="zoomInput">100%</output>
               </span>
               <input id="zoomInput" type="range" min="0.65" max="1.5" step="0.01" value="1" />
@@ -263,7 +260,7 @@
             <div class="section-heading">
               <div>
                 <p class="section-index">04</p>
-                <h2>Output</h2>
+                <h2>Export</h2>
               </div>
               <output class="section-value" id="dimensionOutput">3840 × 2160</output>
             </div>
@@ -271,9 +268,9 @@
             <label class="select-field full-width" for="resolutionInput">
               <span>Long edge</span>
               <select id="resolutionInput">
-                <option value="1920">1,920 px · proof</option>
+                <option value="1920">1,920 px</option>
                 <option value="3840" selected>3,840 px · 4K</option>
-                <option value="6000">6,000 px · print</option>
+                <option value="6000">6,000 px</option>
                 <option value="7680">7,680 px · 8K</option>
               </select>
             </label>
@@ -282,7 +279,7 @@
               <button class="button button-primary" id="exportPngPanelButton" type="button">PNG</button>
               <button class="button button-secondary" id="exportSvgButton" type="button">SVG</button>
             </div>
-            <p class="export-note">Exports use every sample and the current camera. Large PNGs can take a moment; choose a smaller size on mobile.</p>
+            <p class="export-note">Exports include every sample and use the current view. Larger images take longer to save.</p>
           </section>
 
           <details class="equation-panel">
@@ -292,14 +289,14 @@
               <p><span>ẏ</span> = −ay − 4z − 4x − z²</p>
               <p><span>ż</span> = −az − 4x − 4y − x²</p>
             </div>
-            <p class="equation-note">A numerical approximation using fourth-order Runge–Kutta integration. Small changes to the starting point can lead to very different trajectories.</p>
+            <p class="equation-note">A numerical approximation using fourth-order Runge–Kutta integration. Small changes to the starting point can lead to very different trajectories (the decimal places are doing actual work here).</p>
             <p class="equation-note"><a id="systemSource" href="https://sprott.physics.wisc.edu/chaos/symmetry.htm">Sprott: A Symmetric Chaotic Flow</a></p>
           </details>
         </aside>
       </main>
 
       <footer class="app-footer">
-        <p>Built by <a href="../../index.html">Jerry Guo</a> · Calculated in your browser</p>
+        <p><a href="../../index.html">Jerry Guo</a> · Runs in your browser</p>
         <p id="footerState">x₀ −6.40 · y₀ 0.00 · z₀ 0.00</p>
       </footer>
     </div>

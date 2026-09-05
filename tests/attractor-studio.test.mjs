@@ -23,7 +23,7 @@ function studio() {
   const defaults = {
     systemInput: 'halvorsen', detailInput: '128000', stepInput: '0.0025',
     burnInInput: '50', initialX: '-6.4', initialY: '0', initialZ: '0',
-    resolutionInput: '3840', paletteInput: 'aurora-quiet', zoomInput: '1',
+    resolutionInput: '3840', paletteInput: 'aurora', zoomInput: '1',
   };
   function node(selector) {
     if (nodes.has(selector)) return nodes.get(selector);

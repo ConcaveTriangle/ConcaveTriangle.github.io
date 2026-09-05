@@ -25,7 +25,7 @@ compatible with GitHub Pages; `CNAME` preserves the existing custom domain.
 - `research/laweducator.html`: publication overview and verified DOI.
 - `index.css`: shared appearance and responsive layouts.
 - `site.js`: navigation and footer year.
-- `studios/attractors/`: self-contained attractor studio, generalized from
+- `studios/attractors/`: self-contained Attractors app, generalized from
   the local Halvorsen Trajectory Studio. Includes camera and color controls,
   trace replay, and full-resolution PNG/SVG exports. No server or external
   runtime dependencies are needed.

@@ -8,7 +8,7 @@
   const definitions = [
     {
       id: 'halvorsen', name: 'Halvorsen', mark: 'H',
-      description: 'Three interwoven lobes in a cyclically symmetric flow.',
+      description: 'A flow with three lobes and cyclic symmetry.',
       source: 'https://sprott.physics.wisc.edu/chaos/symmetry.htm', sourceLabel: 'Sprott: A Symmetric Chaotic Flow',
       parameters: [parameter('a', 'a', 1.3, 1.1, 1.7)],
       equations: ['ẋ = −ax − 4y − 4z − y²', 'ẏ = −ay − 4z − 4x − z²', 'ż = −az − 4x − 4y − x²'],
@@ -18,7 +18,7 @@
     },
     {
       id: 'lorenz', name: 'Lorenz', mark: 'L',
-      description: 'The butterfly-shaped flow: a trajectory moving between two lobes.',
+      description: 'A trajectory that moves between two lobes.',
       source: 'https://www.d.umn.edu/~mhampton/DynSys/ChaoticFlows/', sourceLabel: 'Hampton: Chaotic Flows',
       parameters: [parameter('sigma','σ',10,1,30,0.1), parameter('rho','ρ',28,1,60,0.1), parameter('beta','β',8/3,0.1,6,0.001)],
       equations: ['ẋ = σ(y − x)', 'ẏ = x(ρ − z) − y', 'ż = xy − βz'],
@@ -28,7 +28,7 @@
     },
     {
       id: 'rossler', name: 'Rössler', mark: 'R',
-      description: 'A spiral ribbon that folds back through a single rising loop.',
+      description: 'A spiral that rises and folds back on itself.',
       source: 'https://www.d.umn.edu/~mhampton/DynSys/ChaoticFlows/', sourceLabel: 'Hampton: Chaotic Flows',
       parameters: [parameter('a','a',0.2,0.05,0.4,0.005), parameter('b','b',0.2,0.05,0.4,0.005), parameter('c','c',5.7,2,12,0.05)],
       equations: ['ẋ = −y − z', 'ẏ = x + ay', 'ż = b + z(x − c)'],
@@ -38,7 +38,7 @@
     },
     {
       id: 'thomas', name: 'Thomas', mark: 'T',
-      description: 'Sine-driven, cyclically symmetric motion with a woven, rounded shape.',
+      description: 'A cyclically symmetric system with sine terms.',
       source: 'https://sprott.physics.wisc.edu/pubs/paper302.pdf', sourceLabel: 'Sprott & Chlouverakis: Labyrinth Chaos',
       parameters: [parameter('b','b · dissipation',0.208186,0.05,0.4,0.000001)],
       equations: ['ẋ = sin(y) − bx', 'ẏ = sin(z) − by', 'ż = sin(x) − bz'],
@@ -48,7 +48,7 @@
     },
     {
       id: 'langford', name: 'Langford (Aizawa)', mark: 'La',
-      description: 'A twisting flow around a rounded shell. Often called “Aizawa” online; this system is attributed to Langford.',
+      description: 'A flow around a rounded shell. Often called “Aizawa”; this system is attributed to Langford.',
       source: 'https://doi.org/10.1016/j.cnsns.2020.105226', sourceLabel: 'Fleurantin & Mireles James: Resonant tori and chaos',
       parameters: [parameter('a','a',0.95,0.5,1.2), parameter('b','b',0.7,0.3,1), parameter('c','c',0.6,0.1,1), parameter('d','d',3.5,1,6,0.05), parameter('e','e',0.25,0.05,0.5), parameter('f','f',0.1,0,0.3)],
       equations: ['ẋ = (z − b)x − dy', 'ẏ = dx + (z − b)y', 'ż = c + az − z³/3 − (x² + y²)(1 + ez) + fzx³'],
