@@ -4,6 +4,9 @@
 *.tgz
 *.tar.gz
 
+# Local OpenAI Sites configuration
+/.openai/
+
 # Local writing references and scratch notes
 /input/
 /inputs/
