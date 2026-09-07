@@ -20,6 +20,11 @@ Stop the development server before starting the output preview. Set `PORT` to us
 a different port. Standard npm equivalents (`npm run build`, `npm test`, etc.) also work.
 The link check does not fetch external websites.
 
+The build adds a content hash to local CSS and JavaScript URLs, so a changed
+asset gets a new URL and bypasses stale browser/CDN caches. The source pages also
+include an initial version for the migration from the old website. Deploy with
+the GitHub Actions workflow so future builds update these versions automatically.
+
 ## Editing
 
 - `index.html`, `index.css`, `site.js`: homepage, shared styles, and navigation.
