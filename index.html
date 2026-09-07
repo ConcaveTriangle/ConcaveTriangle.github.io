@@ -1,96 +1,74 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jerry Guo</title>
-    <link rel="icon" href="./assets/icon.png" type="image/png">
-    <link rel="stylesheet" href="index.css">
-    <link rel="stylesheet" href="kanit.css">
-    <link rel="stylesheet" href="./assets/FontAwesome/css/brands.css">
-    <link rel="stylesheet" href="./assets/FontAwesome/css/solid.css">
-    <link rel="stylesheet" href="./assets/FontAwesome/css/fontawesome.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Jerry Guo — mathematics research, software and hardware projects, and AMC, AIME, and USA(J)MO solutions on AoPS.">
+  <meta name="theme-color" content="#f0f9ff">
+  <title>Jerry Guo</title>
+  <link rel="stylesheet" href="index.css">
+  <script type="module" src="site.js"></script>
 </head>
-
 <body>
-    <!-- Header -->
-    <header>
-        <div class="logo">Jerry Guo</div>
-        <nav>
-            <a href="#about">About</a>
-            <a href="#projects">Projects</a>
-            <a href="#experience">Experience</a>
-            <a href="#papers">Papers</a>
-            <a href="#contact">Contact</a>
-        </nav>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="hero" id="top">
-        <!-- Profile Image -->
-        <div>
-            <img src="profile.jpeg" alt="Profile Picture">
-        </div>
-        
-        <!-- About Text -->
-        <div>
-            <h1>About Me</h2>
-            <p>
-                Hi! I'm Jerry Guo, a student at Gunn High School. I love creating, and I specialize in mathematics and computer science.  
-            </p>
-            <a href="https://www.linkedin.com/in/jerry-guo-66a211229/"><i class="fa-brands fa-linkedin contact"></i></a>
-            <a href="https://github.com/ConcaveTriangle/"><i class="fa-brands fa-github contact"></i></a>
-            <a href="mailto:jerryxguo2006@gmail.com"><i class="fa-solid fa-envelope contact"></i></a>
-            
-        </div>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" id="home">
+    <a class="wordmark" href="#about" aria-label="Jerry Guo, home">Jerry Guo</a>
+    <nav aria-label="Main navigation"><a href="#about">About</a><a href="#projects">Projects</a><a href="#papers">Research</a><a href="#aops">AoPS</a></nav>
+  </header>
+  <main id="main">
+    <section class="intro section-wrap" id="about" aria-labelledby="intro-title">
+      <div class="intro-copy">
+        <h1 id="intro-title">Jerry Guo</h1>
+        <p>I'm interested in mathematics and computer science. I do research on graph coloring and build things with software and hardware. Online, I go by <a href="https://github.com/ConcaveTriangle">ConcaveTriangle</a> (the geometry is questionable).</p>
+        <p>I've done competition math and taken courses at Foothill College (Math 1A–1D and CS 2A). Current projects are below.</p>
+        <div class="profile-links"><a href="https://github.com/ConcaveTriangle">GitHub</a><a href="https://www.linkedin.com/in/jerry-guo-66a211229/">LinkedIn</a><a href="mailto:jerryxguo2006@gmail.com">Email</a></div>
+      </div>
+      <img class="portrait" src="profile.jpeg" alt="Jerry Guo" width="180" height="210">
     </section>
-
-    <!-- About Me -->
-    <section id="about" class="container">
+    <section class="section-wrap content-section" id="projects" aria-labelledby="projects-title">
+      <div class="section-heading"><h2 id="projects-title">Projects</h2><a class="text-link" href="https://github.com/ConcaveTriangle?tab=repositories">GitHub ↗</a></div>
+      <div class="project-grid">
+        <article class="project-card"><h3><a href="studios/attractors/index.html">Attractors <span aria-hidden="true">↗</span></a></h3><p>Plots five attractors in 3D, with adjustable parameters and colors. Images can be saved as PNG or SVG.</p><span class="project-meta">Mathematics · JavaScript</span></article>
+        <article class="project-card"><h3><a href="projects/helmet-hud.html">Helmet HUD <span aria-hidden="true">↗</span></a></h3><p>A Raspberry Pi heads-up display with live sensors, navigation, weather, and destinations sent from a phone.</p><span class="project-meta">Hardware · Python · In progress</span></article>
+        <article class="project-card"><h3><a href="projects/eliza.html">Eliza v2 <span aria-hidden="true">↗</span></a></h3><p>A personal AI agent with persistent conversations, resumable analysis, tools, and memory.</p><span class="project-meta">AI · In progress</span></article>
+        <article class="project-card"><h3><a href="projects/selfportrait.html">SelfPortrait v2 <span aria-hidden="true">↗</span></a></h3><p>A language-model project exploring personal conversational style. I'm working on the second version.</p><span class="project-meta">Language models · In progress</span></article>
+        <article class="project-card"><h3><a href="projects/aegis.html">Aegis <span aria-hidden="true">↗</span></a></h3><p>A local-first Reddit feed and comment filter, with configurable preferences and optional semantic classification.</p><span class="project-meta">Browser tools · In progress</span></article>
+        <article class="project-card"><h3><a href="projects/spike-countdown.html">VALORANT spike countdown <span aria-hidden="true">↗</span></a></h3><p>A Windows countdown overlay with visual HUD detection and manual hotkeys.</p><span class="project-meta">Python · <a href="https://github.com/ConcaveTriangle/Valorant-Spike-Countdown">Source code ↗</a></span></article>
+      </div>
     </section>
-
-    <!-- Projects -->
-    <section id="projects" class="container project">
-        <h2 class="section-title">My Projects</h2>
-        <div class="project-item">
-            <h3>NAS Management Interface</h3>
-            <p>A streamlined tool for managing network storage, accessible at <a href="https://drive.concavetriangle.com">drive.concavetriangle.com</a>.</p>
-        </div>
-        <div class="project-item">
-            <h3>AI Frontend</h3>
-            <p>An advanced interface to interact with Eliza, accessible at <a href="https://ai.concavetriangle.com">ai.concavetriangle.com</a>.</p>
-        </div>
+    <section class="section-wrap content-section research-section" id="papers" aria-labelledby="research-title">
+      <div class="section-heading"><h2 id="research-title">Research</h2></div>
+      <p class="research-intro">I'm currently working on Chromatic graph coloring research.</p>
+      <div class="research-papers">
+        <article class="research-card">
+          <div class="tags"><span>Group theory</span><span>2025</span></div>
+          <h3>On a dual version of Huppert’s ρ-σ conjecture of codegrees</h3>
+          <p>Xia Xu, Yang Liu, Michael Li, Xinyi Jerry Guo &amp; Yong Yang</p>
+          <p><cite>Communications in Algebra</cite>, 53(12), 5353–5357.</p>
+          <p>Improved bounds on the derived length of solvable linear groups, with an application to a dual version of Huppert’s conjecture on character codegrees.</p>
+          <a class="text-link" href="https://doi.org/10.1080/00927872.2025.2511907">Paper <span aria-hidden="true">↗</span></a>
+        </article>
+        <article class="research-card">
+          <div class="tags"><span>Conference paper</span><span>ACAIT 2024</span></div>
+          <h3>AI-Assisted Legal Education for Student Grouping Using Large Language Models</h3>
+          <p>Jiaxu Miao, Yiquan Wu &amp; Xinyi Guo</p>
+          <p><cite>2024 8th Asian Conference on Artificial Intelligence Technology</cite>, 283–290.</p>
+          <p>LawEducator combines a language model with retrieved legal knowledge, and explores applications in learning and student grouping.</p>
+          <p><a class="text-link" href="https://doi.org/10.1109/ACAIT63902.2024.11022064">Paper on IEEE Xplore <span aria-hidden="true">↗</span></a></p>
+          <a class="text-link" href="research/laweducator.html">Overview <span aria-hidden="true">↗</span></a>
+        </article>
+      </div>
     </section>
-
-    <!-- Experience -->
-    <section id="experience" class="container experience">
-        <h2 class="section-title">Experience</h2>
-        <div class="experience-item">
-            <h3>Foothill College</h3>
-            <p>Attended courses Math 1A-1D and CS 2A.</p>
-        </div>
-        <div class="experience-item">
-            <h3>Competition Math</h3>
-            <p>Competed on various college math competitions.</p>
-        </div>
+    <section class="section-wrap content-section aops-section" id="aops" aria-labelledby="aops-title">
+      <h2 id="aops-title">Math solutions</h2>
+      <p>I write solutions to AMC, AIME, and USA(J)MO problems on <a href="https://artofproblemsolving.com/community">Art of Problem Solving (AoPS)</a> as <strong>ConcaveTriangle</strong>. A few examples, with the dead ends omitted:</p>
+      <ul class="solution-list">
+        <li><a href="https://artofproblemsolving.com/wiki/index.php?title=2018_AMC_10A_Problems%2FProblem_9#Solution_8">2018 AMC 10A, Problem 9</a><span>Solution 8 · Geometry and a geometric series</span></li>
+        <li><a href="https://artofproblemsolving.com/wiki/index.php/2021_Fall_AMC_12B_Problems/Problem_18#Solution_2">2021 Fall AMC 12B, Problem 18</a><span>Solution 2 · Recurrence and induction</span></li>
+        <li><a href="https://artofproblemsolving.com/wiki/index.php/2023_AIME_II_Problems/Problem_3#Solution_6">2023 AIME II, Problem 3</a><span>Solution 6 · Trigonometric Ceva</span></li>
+      </ul>
     </section>
-
-    <!-- Papers -->
-    <section id="papers" class="container papers">
-        <h2 class="section-title">Publications & Research</h2>
-        <div class="paper-item">
-            <h3>AI-assisted Legal Education for Student Grouping Using Large Language Models</h3>
-            <p>Large language models (LLMs) have demonstrated transformative potential in fields like education and law. This paper examines their role as assistive tools for legal education through a system called LawEducator, an AI assistant designed for legal learning. Built on a pre-trained LLM with domain-specific fine-tuning and instructional alignment, LawEducator answers legal queries and integrates a retriever to source knowledge from legal texts. The paper also explores its application in educational practices like student grouping and analyzes the benefits and limitations of LLMs in legal education. <a href="#">Read more</a></p>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <p>©2024 Jerry Guo. All rights reserved.</p>
-        <p><a href="#top">Back to Top</a></p>
-    </footer>
-
+  </main>
+  <footer class="site-footer section-wrap" id="contact"><p>© <span data-year>2026</span> Jerry Guo</p><a href="mailto:jerryxguo2006@gmail.com">jerryxguo2006@gmail.com</a><a href="#home">Back to top ↑</a></footer>
 </body>
-
 </html>

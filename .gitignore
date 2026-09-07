@@ -1,0 +1,39 @@
+# Generated builds and local deployment snapshots
+/dist/
+/.preview/
+*.tgz
+*.tar.gz
+
+# Local writing references and scratch notes
+/input/
+/inputs/
+/notes/
+
+# Dependencies, caches, and test output
+node_modules/
+coverage/
+.cache/
+playwright-report/
+test-results/
+*.log
+*.tsbuildinfo
+
+# Local credentials (keep sanitized examples trackable)
+.env
+.env.*
+!.env.example
+!.env.*.example
+.dev.vars
+.dev.vars.*
+!.dev.vars.example
+
+# Operating system and editor files
+.DS_Store
+._*
+Thumbs.db
+Desktop.ini
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
